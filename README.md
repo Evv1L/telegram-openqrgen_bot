@@ -9,4 +9,5 @@ You need Python and these `pip` modules:
 pip install telebot
 pip install pyTelegramBotAPI
 pip install opencv-python
+pip install pyzbar
 ```
