@@ -4,6 +4,8 @@ import requests
 import telebot
 import os
 
+from pyzbar.pyzbar import decode
+
 TOKEN = "YOUR_BOT_TOKEN"
 bot = telebot.TeleBot(TOKEN, parse_mode=None)
 print("Bot is working!")
@@ -41,8 +43,8 @@ def read_qrcode(message):
 
     #Decode
     img=cv2.imread("qrcode-read-"+str(message.from_user.id)+"-"+str(message.message_id)+".jpg")
-    det=cv2.QRCodeDetector()
-    val, pts, st_code=det.detectAndDecode(img)
+    result = decode(img)
+    val = result[0].data.decode("utf-8")
 
     #Is empty?
     if val == "":
